@@ -1,0 +1,123 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    color: #333;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 20px;
+  }
+  
+  .header {
+    background: #333;
+    color: #fff;
+    padding: 20px 0;
+  }
+  
+  .header .logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+  }
+  
+  .header .logo span {
+    color: #ff6b6b;
+  }
+  
+  .nav {
+    display: flex;
+    gap: 15px;
+  }
+  
+  .nav a {
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  .hero {
+    background: linear-gradient(to bottom right, #ff6b6b, #ff9a9e);
+    color: #fff;
+    text-align: center;
+    padding: 100px 20px;
+  }
+  
+  .hero h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+  }
+  
+  .hero p {
+    font-size: 18px;
+    margin-bottom: 30px;
+  }
+  
+  .hero .btn {
+    background: #fff;
+    color: #333;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+  }
+  
+  .about, .services, .portfolio {
+    padding: 50px 20px;
+    text-align: center;
+  }
+  
+  .cards {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .card {
+    background: #f4f4f4;
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+  }
+  
+  .portfolio .gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-top: 20px;
+  }
+  
+  .portfolio .item {
+    background: #ddd;
+    height: 150px;
+    border-radius: 10px;
+  }
+  
+  .footer {
+    background: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    margin-top: 20px;
+  }
+  
+  /*Form tag*/
+
+  .list{
+    display:flex;
+    flex-direction: column;
+    width: 30rem;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem auto;
+    border: 2px solid black;
+    padding: 30px;
+    gap:20px;
+  }

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Shorter Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div>
+        <h1>URL Shorter Link</h1>
+        <form action="/" method="post">    <!--post method used-->
+         <label for="url"> Enter the Url Link <input type="url" required autocomplete="off" name="url" id="url"></label>     
+         <label for="shortCode"> Enter Shorter Url text <input type="text" required autocomplete="off" name="shortCode" id="shortCode"></label>     
+         <button type="submit">Generate short link</button>
+        </form>
+
+        <h2>Shortened URls</h2>
+        <ul>
+            {{shortened_urls}}           <!--used for get in node-->
+        </ul>
+    </div>
+
+<script>
+    
+</script>
+
+</body>
+</html>
