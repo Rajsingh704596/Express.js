@@ -1,7 +1,8 @@
 // import and export functionality is part of EcmaScript module , so if we need to put this command in package.json -  "type":"module",
 
 import express from 'express';  
-import { PORT } from './zod.js';          //(case 2) make sure .js add at the end that important  (In React we don't need like this but in Node.js we import like this when import .js file)
+//import { PORT } from './zod.js';          //$(case 2) validation without zod
+import { PORT } from './zod.js';          //$(case 3) make sure .js add at the end that important  (In React we don't need like this but in Node.js we import like this when import .js file)
 import path from "path" ;             //path use so we get path of public folder and inside file html and css which is send in Express.js
 
 //^ instance create of express
