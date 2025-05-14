@@ -39,7 +39,7 @@ const app = express();
         // console.log(__filename);     //o/p-   /D:/Express.js/ExpressJsIntro/app.js
         // res.send("hi")
         
-        //$ send file index.html as a response
+        //$ send file index.html as a response (here at a time one file share)
         const homePagePath =path.join(import.meta.dirname, "public", "index.html");     // so we get path public folder inside index.html which join with this file directory using path.join (path module)      -   D:\Express.js\ExpressJsIntro\public\index.html   
         //instead of send we use sendFile 
         res.sendFile(homePagePath);
@@ -48,16 +48,17 @@ const app = express();
 //@ but at a time we send one file , that's drawback
 
 //^ (better way)
-//$ we use express.static to serve html, css a js file in express.js
+//$ we use express.static to serve(send) html, css a js all file together in express.js 
 //* Static files as name mentions are files which don't change , these can be assets like images, css, html, font etc.
 //* Express has middleware named express.static("public") which we can use to serve static files. it will handle all files inside the directory provided.
 //* files in the static directory are accessible via their URL. for instance, if we have an image logo.png in the public folder, we can access it in the browser with https://localhost:3000/logo.png.
 
-// app.use(express.static("public"));    // it's work but we use to apply absolute path(root path) for better way
+// app.use(express.static("public"));    //^ it's work public folder all file show in Ui in default path "/" and make sure code use in top 
+//@but we use to apply absolute path(root path) for better way-
 
-const staticPath =path.join(import.meta.dirname,"public");
+const staticPath =path.join(import.meta.dirname,"public");        // D:\Express.js\ExpressJsIntro\public   
 // app.use(express.static(staticPath));    //here default show in localhost:3000
- app.use("/public", express.static(staticPath));   // now when hit /public then show public folder
+ app.use("/public", express.static(staticPath));   // now when hit- localhost:3000/public/ then show public folder in UI with help of express.static middleware
 
 
  //^ server listen
