@@ -30,14 +30,17 @@ const app = express();
 // now in Express if we use Es module so we don't use (__dirname), (__filename) we have alternative option to get path just import like this
  app.get("/",(req,res)=>{
         //  console.log(import.meta.dirname);       // o/p-          D:\Express.js\ExpressJsIntro 
+        //  console.log(import.meta.filename);      // o/p-          D:\Express.js\ExpressJsIntro\app.js 
+
         //  console.log(import.meta.url);           // o/p-          file:///D:/Express.js/ExpressJsIntro/app.js 
 
         //^ we create instance to get absolute path from import.meta.url like this
         // const __filename= new URL(import.meta.url).pathname;
         // console.log(__filename);     //o/p-   /D:/Express.js/ExpressJsIntro/app.js
         // res.send("hi")
-
-        const homePagePath =path.join(import.meta.dirname, "public", "index.html");     // so we get path public folder inside index.html which join with this file directory
+        
+        //$ send file index.html as a response
+        const homePagePath =path.join(import.meta.dirname, "public", "index.html");     // so we get path public folder inside index.html which join with this file directory using path.join (path module)      -   D:\Express.js\ExpressJsIntro\public\index.html   
         //instead of send we use sendFile 
         res.sendFile(homePagePath);
 
@@ -114,4 +117,3 @@ const staticPath =path.join(import.meta.dirname,"public");
 //$  npm run hamesha uss directory ko Current working directory manta hai jaha package.json hai, to .env file relative path shi se set karna padega 
 
 //$ package.json or node_modules ko uss directory m rakhe jaha npm run command chalana ho
-
