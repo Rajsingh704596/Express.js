@@ -48,7 +48,7 @@ const app = express();
 //@ but at a time we send one file , that's drawback
 
 //^ (better way)
-//$ we use express.static to serve(send) html, css a js all file together in express.js 
+//$ we use express.static() middleware to serve(send) html, css and js all file together and pass to client in express.js 
 //* Static files as name mentions are files which don't change , these can be assets like images, css, html, font etc.
 //* Express has middleware named express.static("public") which we can use to serve static files. it will handle all files inside the directory provided.
 //* files in the static directory are accessible via their URL. for instance, if we have an image logo.png in the public folder, we can access it in the browser with https://localhost:3000/logo.png.

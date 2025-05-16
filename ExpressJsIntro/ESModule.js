@@ -1,19 +1,20 @@
 //! ES Modules - Caveats 
 
-//$ Es Modules:-
+//$ Es Modules work when we use "type":"module", in package.json :-
 //# Es Modules(import/export) are an alternative to CommonJS(require/ module.exports).
 //# In newer versions of Node.js(14.8+), we can use "top-level await" without needing to wrap it in an async function.
 //  const response = await fetch("https://jsonplaceholder.typicode.com/todos/1");                                
 //  const data = await response.json();
-//  console.log(data);                                                // so it's work in backend node.js
+//  console.log(data);                                                // so it's work in backend node.js without wrap in async fun.
 
 //$ for getting directory or file path :-
 //# In CommonJS, __dirname (used for current directory) and __filename (used for current file path) are available by default.
+//console.log(__dirname);    console.log(__filename);
 //# In ES Modules, they don't exist.
 
 //$ Solution(Node.js 20.11.0+):-
-//  console.log(import.meta.dirname);
-//  console.log(import.meta.filename);
+//  console.log(import.meta.dirname);          //o/p- D:\Express\ExpressJsIntro
+//  console.log(import.meta.filename);         //o/p- D:\Express\ExpressJsIntro\ESModule.js
 //# In Node.js 20.11.0 and above, __dirname and __filename can be accessed using import.meta.
 
 //$ Solution for Older Versions(Before 20.11.0):-
