@@ -25,9 +25,9 @@
 
 //! Route Parameters in Express.js-
 //# Route parameters in Express.js are "dynamic parts of the URL" that can be accessed using "req.params"
-//# They are defined in the route path with a colon (:), e.g /user/:id/view/:article  , where id is a route parameter.
-//# we can access the value of a route parameter via "req.params.id", "req.params.article" in the route handler.
-//# Route parameters are used to capture values from the URL and pass them to the route handler for processing, like user IDs, product name etc.
+//# They are defined in the route path with a colon (:), e.g /user/:id/view/:article  , where "id and article" is a route parameter.
+//# we can access the dynamic value of a route parameter via "req.params.id", "req.params.article" in the route handler.
+//# Route parameters are used to capture dynamic values from the URL and pass them to the route handler for processing, like user IDs, product name etc.
 //# Express automatically parses and makes the values available in req.params as an object where the parameter name is the key.
 
 
@@ -71,13 +71,16 @@ app.get("/profile/:username", (req,res)=>{
     console.log(req.params);               // in terminal o/p -[Object: null prototype] { username: 'rock' }
     res.send(`<h1>Username is ${req.params.username}</h1>`);
 })
-
-app.get("/profile/:username/article/:slug", (req,res)=>{
+//^ Multiple route parameter define here                      //here slug - represent unique identifier 
+app.get("/profile/:username/article/:slug", (req,res)=>{        
      console.log(req.params);                     //       [Object: null prototype] { username: 'rock', slug: 'how-are-you' }
-   // res.send(`<h1>Article ${req.params.username} by ${req.params.slug} </h1>`)                // In UI - Article rock by how-are-you
-    
-    //^ so we remove - dash inside ui like this
-    const formateSlug = req.params.slug.replace(/-/g," ");      //inside url slug parameter - dash replaced by space
+   // res.send(`<h1>Article ${req.params.username} by ${req.params.slug} </h1>`)                
+   //when hit- localhost:3000/profile/rock/article/how-are-you          In UI o/p - Article rock by how-are-you
+
+   //^ 1st way- if we use normal space in url how are you ,then enter it's add %20 in url automatic  , in ui space show perfectly b/w how are you
+
+    //^ 2nd way- we remove - dash (hyphen symbol) inside ui like this        , and hit localhost:3000/profile/rock/article/how-are-you
+    const formateSlug = req.params.slug.replace(/-/g," ");      //inside url slug parameter - dash replaced by space , here regex used
     res.send(`<h1>Article ${req.params.username} by ${formateSlug} </h1>`)              // In UI -  Article rock by how are you
 
 })
