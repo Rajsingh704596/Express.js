@@ -31,8 +31,9 @@
 //# Express automatically parses and makes the values available in req.params as an object where the parameter name is the key.
 
 
-//! Query Parameters in Express.js
-//# Query parameters are key-value pairs appended to URL after "?", and multiple query parameter separated by "&" , e.g /search?query=express&limit=10
+//! Query Parameters in Express.js-    (useCase- Pagination, Filtering, Searching, Sorting time query parameter use)
+//# Query parameters are key-value pairs appended to URL after "?", and multiple query parameter separated by "&" 
+//#  e.g /search?query=express&limit=10
 //# In Express.js, they can be accessed using "req.query", which returns an object containing the parameters.
 //# for example, in /search?page=4, req.query.page will give "page".
 //# Query parameters are often used to pass optional or filter data to the server without modifying the route.
@@ -86,12 +87,16 @@ app.get("/profile/:username/article/:slug", (req,res)=>{
 })
 
 //? route create and access Query Parameter
-app.get("/product",(req,res)=>{ 
-    // if i hit url with single query-  localhost:3000/product?search=royal
-   // console.log(req.query);      //[Object: null prototype] { search: 'royal'}       
-   // res.send(`<h1>User Product ${req.query.search}<h1>`)      // In Ui o/p-  user product royal
+app.get("/product",(req,res)=>{
+
+    //^ if we hit url - localhost:3000/product      or hit- localhost:3000/product?        (in terminal o/p same)
+    //  console.log(req.query) ;                 //o/p- [Object: null prototype] {}       //empty object get b/c ? khuch nhi likha 
+
+    //^ if we hit url with single query-  localhost:3000/product?search=apple          (here key is search and value is apple )
+   // console.log(req.query);      //[Object: null prototype] { search: 'apple'}       
+   // res.send(`<h1>User Product ${req.query.search}<h1>`)      // In Ui o/p-  user product apple
  
-   //if i hit url with multiple query parameter- http://localhost:3000/product?page=2&limit=3
+   //^ if we hit url with multiple query parameter(using & ampersand symbol)- http://localhost:3000/product?page=2&limit=3
     console.log(req.query)                  //[Object: null prototype] { page: '2', limit: '3' }
     res.send(`<h1> the page is ${req.query.page} and it's limit ${req.query.limit} </h1>`)  // In UI o/p-  the page is 2 and it's limit 3
 
