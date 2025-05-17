@@ -41,14 +41,14 @@
 
 
 //! Form Submission in Express.js-
-//# we can use the <form> tag with the action attribute to specify the URL to which the form data is submitted.
+//# we can use the <form> tag with the "action attribute" to specify the URL to which the form data is submitted.
 
-//# By default, a form will use the GET request, and we can handle it with app.get to access form data via req.query, as the data is sent through the URL as query strings.
+//# By default, "a form will use the GET request", and we can handle it with app.get to access form data via "req.query", as the data is sent through the URL as query strings.
 
-//# Since URLs have a length limit, we can use the POST method for form submissions, which sends the data in the request body, allowing for larger amount of data.
-   //# to access data from a POST request, we must first use the express.urlencoded() middleware to parse the request body.
-   //# the urlencoded option {extended:true} uses the qs library to parse the query string, allowing for more complex structures like nested objects, which the default parser cannot handle.
-   //# Use req.body in app.post to access the form data sent in the body of a POST request. 
+//# Since "URLs have a length limit", we can use the "POST method" for form submissions, which sends the data in the request body, allowing for larger amount of data.
+   //# to access data from a POST request, we must first use the " express.urlencoded() " middleware to parse the request body.
+   //# the urlencoded option {extended:true} uses the "qs library" to parse the query string, allowing for more complex structures like "nested objects", which the default parser cannot handle.
+   //# Use "req.body in app.post" to access the form data sent in the body of a "POST request". 
 
 //! Handling 404 page-
 //# Use a middleware function with no specific route, like app.use((req, res)=>{...}), to "handle unmatched routes".
@@ -108,22 +108,23 @@ const staticPath =path.join(import.meta.dirname,"public");
 // app.use(express.static(staticPath));    //here default show in localhost:3000
  app.use("/public", express.static(staticPath));   // now when hit /public then show public folder
 
- //^Case-1 When Form submit : By default, form will use get req. so we can handle using app.get and access data using req.query
+ //^Case-1 When Form submit (old way) : By default, form will use get req. so we can handle using app.get and access data using req.query
  app.get("/contact",(req,res)=>{
       console.log(req.query);      // [Object: null prototype] { name: 'rock', message: 'hi' }
-    //   res.send("ok");
-       res.redirect("/")
-
-    //Drawback is when submit data, the data show in url  http://localhost:3000/contact?name=rock&message=hi
+      res.redirect("/")      //after submit form redirect to homepage
+     //   res.send("ok");
+    //@ Drawback is when submit data, the data show in url  http://localhost:3000/contact?name=rock&message=hi
  })
 
-//$ better way 
- //^ Case-2 we use post method, we need to pass middleware express.urlencoded({extended:true}) and inside app.post access data using "req.body"
+//$ better way (when explicitly in Form attribute method:post apply)
+ //^ Case-2 we use post method , we need to pass middleware express.urlencoded({extended:true}) and inside app.post access data using "req.body"
 
- app.use(express.urlencoded({extended:true})) //must be used 
+ app.use(express.json())      // so this middle use for JSON data parse easily from client(when JSON.Stringify(formdata)) to server
+
+ app.use(express.urlencoded({extended:true})) //must be used middleware so data will parse and easily get after form submission  , here {extended:true}  it handle nested object
  app.post("/contact", (req,res)=>{
     console.log(req.body);         //o/p when normal parse - { name: 'rock', message: 'hi rock' }
-                                  //o/p Complex parse (value pass in object form) handle when we use extended:true - { user: { name: 'royal', message: 'hello world\r\n' } }
+                                  //o/p Complex parse (value pass in object form) handle when we use extended:true - { user: { name: 'royal', message: 'hello world' } }
     res.redirect("/public")        // after form submit redirect on same page
  })
 

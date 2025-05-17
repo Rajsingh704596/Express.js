@@ -78,11 +78,11 @@
       <label for="name">
         <!-- name attribute must be used -->
         <!-- Enter User Name : <input type="text" name="name" id="name" >  normal parse method -->
-        Enter User Name: <input type="text" name="user[name]" id="name">  <!-- here name attribute Object pass -->
+        Enter User Name: <input type="text" name="user[name]" id="name">  <!-- here name attribute Object pass , complex data send -->
       </label>
       <label for="message">
         <!-- Enter Message : <textarea name="message" id="message" row="15" cols="15"></textarea> -->
-        Enter Message : <textarea name="user[message]" id="message" ></textarea>
+        Enter Message : <textarea name="user[message]" id="message" ></textarea>  <!-- so these nested object handle by {extended:true} in backend-->
       </label>
        <button type="submit">Submit</button>
     </form>
