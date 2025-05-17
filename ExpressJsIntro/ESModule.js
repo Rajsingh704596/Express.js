@@ -56,16 +56,24 @@
 //# Place this middleware after all defined routes to catch only unhandled requests.
     //^  app.use((req,res)=>{res.status(404).send("page not found")})
 
-//! Separating routes in separate modules-
-//# A route in Express.js is a tool to define modular and reusable routes in an application.
-//# It is create using express.Router() to handle related routes together 
+//! Separating routes in separate modules (Router in express.js)-
+//# A router in Express.js is a "tool to define modular and reusable routes" in an application.
+//# It is create using express.Router() to handle related routes together  
+    // const router = express.Router();
+    //or
+    // import {Router} from "express";
+    // const router = Router();
 //# Routes can be defined using methods like router.get() or router.post()       {app word replace with router}
-//# The router is mounted in the main app using app.use(`/basepath', router)
+//# The router is mounted in the main app using app.use(`/basepath', router) middleware
 
 
 import express from "express";
 import path from "path";
 const app =express();
+//import router from "./routes/separate.routes.js";      //default import    //^ In backend .js must be use in path import time
+import {separateRoutes} from "./routes/separate.routes.js"      // name import must recommended used in routes
+
+
 
 //? route create and access Route parameter 
 app.get("/profile/:username", (req,res)=>{
@@ -141,6 +149,10 @@ const staticPath =path.join(import.meta.dirname,"public");
    return res.status(404).sendFile(path.join(import.meta.dirname,"views","404.html")); // here sendFile where path join of current directory/views/404.html
 
  })
+
+  //? (Express router) routes use by app.use() middleware-
+//   app.use("/api",router);                // default import time
+   app.use("/api",separateRoutes);               // name import time
 
 const PORT =3000;
 
