@@ -50,9 +50,9 @@
    //# the urlencoded option {extended:true} uses the "qs library" to parse the query string, allowing for more complex structures like "nested objects", which the default parser cannot handle.
    //# Use "req.body in app.post" to access the form data sent in the body of a "POST request". 
 
-//! Handling 404 page-
-//# Use a middleware function with no specific route, like app.use((req, res)=>{...}), to "handle unmatched routes".
-//# Inside the middleware, send a 404 status using res.status(404) and a custom message or HTML response.  [ Note - status code: 200-response ok, 302- redirect, 404- website error, 500 above- server error]
+//! Handling 404 Error page in express for unmatched routes-
+//# Use a middleware function with no specific route, like- app.use((req, res)=>{...}), to "handle unmatched routes".
+//# Inside the middleware, send a 404 status using "res.status(404)"" and a custom message or HTML response.  [ Note - status code: 200-response ok, 302- redirect, 404- website error, 500 above- server error]
 //# Place this middleware after all defined routes to catch only unhandled requests.
     //^  app.use((req,res)=>{res.status(404).send("page not found")})
 
@@ -129,14 +129,15 @@ const staticPath =path.join(import.meta.dirname,"public");
  })
 
 
- //? Handling 404 Page (Wrong path put then trigger , NOTE- This middle must be use at the end)-
+ //? Handling 404 error Page (Wrong path put then it's trigger , NOTE- This middleware must be use at the end)-
  //^ only middleware fun with no specific route
 
   // Normal error mess send for unMatch route-
  app.use((req,res)=>{
+   //^ 1st way
    // return res.status(404).send("Page Not Found");   // instead of this we use html error page 
     
-   //^ In express Views folder first create and inside folder we create file 404.html where html code define , so now 
+   //^ 2nd way In express Views folder first create and inside folder we create file 404.html where html code define , so now 
    return res.status(404).sendFile(path.join(import.meta.dirname,"views","404.html")); // here sendFile where path join of current directory/views/404.html
 
  })
