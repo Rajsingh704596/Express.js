@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Student Report Card</h1>
+    
+    <!-- Ejs apply -->
+    <p><%= name %></p>   <!-- using ejs dynamic js content add using escape output in Html , name value define in express file (stdreport.router.js) when render ejs  -->  
+
+     <p><%# it's comment not show in UI , Only this way we comment ejs otherwise it's parse even if inside html comment %></p>
+
+      
+    <!-- Agar `student` pass hua ho, toh uska data dikhao , if condition use inside ejs syntax-->
+    <% if (typeof student !== 'undefined') { %>
+        <p>Name (from student object): <%= student.name %></p>
+        <p>Age: <%= student.age %></p>
+        <p>Grade: <%= student.grade %></p>
+    <% } %>
+</body>
+</html>

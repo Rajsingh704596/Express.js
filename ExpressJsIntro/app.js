@@ -5,6 +5,8 @@ import express from 'express';
 import { PORT } from './zod.js';          //$(case 3) make sure .js add at the end that important  (In React we don't need like this but in Node.js we import like this when import .js file)
 import path from "path" ;             //path use so we get path of public folder and inside file html and css which is send in Express.js
 
+import { reportRouter } from './routes/stdreport.router.js';   // router import
+
 //^ instance create of express
 const app = express();
 
@@ -60,6 +62,13 @@ const staticPath =path.join(import.meta.dirname,"public");        // D:\Express.
 // app.use(express.static(staticPath));    //here default show in localhost:3000
  app.use("/public", express.static(staticPath));   // now when hit- localhost:3000/public/ then show public folder in UI with help of express.static middleware
 
+
+//? In express.js , a template engine is a tool that lets you embed dynamic content into HTML files and render them on the server before sending them to the client. It allows you to create reusable templates, making it easier to generate dynamic web pages with minimal code.
+
+app.set("view engine","ejs");   // here we define to use template engine and it's name
+//app.set("views","./views");    // Bydefault inside view folder jo bhi file(e.g stdreport.ejs) hoga usse access karega template engine , ye line likhne ki jarurat nhi hai ,if other folder hota tb uska name replace kar dete
+
+app.use("/api",reportRouter);
 
  //^ server listen
 //  const PORT = process.env.PORT || 3000;                   //$  normal validation  (case 1)
