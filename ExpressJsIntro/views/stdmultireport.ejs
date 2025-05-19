@@ -6,6 +6,12 @@
     <title>Document</title>
 </head>
 <body>
+    
+    <!-- header.ejs file render(like component) using Include partial ( which is inside views folder)and unescaped output , if it's other we need to change in app.js where ejs set  -->
+
+     <%- include('header')  %>  
+    
+    <section>
     <h1>All Student Report</h1>
     <!-- EJS apply to render dynamic data in HTML -->
      <h2> here map method render all students data which is Array in Object form </h2>
@@ -33,5 +39,12 @@
       <p> Grade:<%= students[i].grade %> </p>
       <p> <% } %> </li>
     
+      </section>  
+
+       
+    <!-- footer.ejs file render(like component) using Include partial ( which is inside views folder)and unescaped output , if it's other we need to change in app.js where ejs set  -->
+
+     <%- include('footer')  %>   
+
 </body>
 </html>
