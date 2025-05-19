@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>All Student Report</h1>
+    <!-- EJS apply to render dynamic data in HTML -->
+     <h2> here map method render all students data which is Array in Object form </h2>
+        <% students.map((curStd)=>{ %>
+      <p> Name: <%= curStd.name %> </p>          <!--Escaped output <%= %> for show in Ui-->
+      <p> Age: <%= curStd.age %> </p>
+      <p> Grade:<%= curStd.grade %> </p>
+      <p> <% }) %> </li>
+    
+      <hr>
+      
+    <h2>here forEach loop render all students data which is Array in Object form </h2> 
+        <% students.forEach((curStd)=>{ %>
+      <p> Name: <%= curStd.name %> </p>          <!--Escaped output <%= %> for show in Ui-->
+      <p> Age: <%= curStd.age %> </p>
+      <p> Grade:<%= curStd.grade %> </p>
+      <p> <% }) %> </li>
+
+      <hr>
+      
+      <h2>  here for loop render all students data which is Array in Object form  </h2>
+        <% for(let i=0 ; i<students.length ; i++){ %>
+      <p> Name: <%= students[i].name %> </p>          <!--Escaped output <%= %> for show in Ui-->
+      <p> Age: <%= students[i].age %> </p>
+      <p> Grade:<%= students[i].grade %> </p>
+      <p> <% } %> </li>
+    
+</body>
+</html>

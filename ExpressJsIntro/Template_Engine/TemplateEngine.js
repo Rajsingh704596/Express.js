@@ -48,4 +48,43 @@
 
     // Output
     // <div><strong>Bold Text</strong></div>
- 
+
+
+ //^ Ejs Syntax- Loops
+ // use Javascript for loop / foreach loops to render lists. Note Every line opening or closing ejs tag <% %> use
+  
+    //^ Ejs in html file with for loop 
+    //    <ul> 
+    //         <% for(let i=0; i< item.length; i++) {  %>          <!-- for loop apply ,  EJS help Js use inside HTML-->
+    //    <li> <%= item[i] %>  </li>                  <!-- print item -->
+    //         <%   }  %> 
+    //    </ul>
+
+    // Express file
+    //    res.render('index', { items: ["Apple","Banana", "Cherry" ]});
+
+    // Output
+    // <ul>
+    //     <li> apple </li>
+    //     <li> banana </li>
+    //     <li> cherry </li>
+    // </ul>
+
+
+  
+    //^ Ejs in html file with forEach loop 
+    //    <ul>
+    //         <% items.forEach(function(item) {  %>         <!-- forEach loop apply ,  EJS help Js use inside HTML-->
+    //    <li> <%= item %>  </li>                  <!-- print item -->
+    //         <%   })  %> 
+    //    </ul>
+
+    // Express file
+    //    res.render('index', { items: ["Apple","Banana", "Cherry" ]});
+
+    // Output
+    // <ul>
+    //     <li> apple </li>
+    //     <li> banana </li>
+    //     <li> cherry </li>
+    // </ul>

@@ -20,4 +20,20 @@ router.get("/report/student",(req,res)=>{
     res.render("stdreport",{name:"Royal", student});        // so when hit url http://localhost:3000/api/report/student then stdreport ejs file render , and Object pass as a dynamic content
 
 })
+
+
+// router create for multi student report
+router.get("/report/students",(req,res)=>{
+      const students=[
+        {  name:"Rock",   age:21,   grade:"10th" },
+        {  name:"Royal",  age:25,   grade:"10th" },               
+        {  name:"Root",   age:21,   grade:"10th" },               
+        {  name:"Veer",   age:24,   grade:"10th" },               
+        {  name:"Raj",   age:22,   grade:"10th" },               
+        {  name:"Roy",   age:21,   grade:"10th" },               
+      ];
+
+      res.render("stdmultireport",{students});
+})
+
 export const reportRouter =router;
