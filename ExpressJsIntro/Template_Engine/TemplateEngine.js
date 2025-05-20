@@ -1,4 +1,4 @@
-//! Template Engines :-
+//! Template Engines :-  (It use for SSR- Server side rendering)
 
 //# A template engine in Express.js is used to " render dynamic HTML by injecting data into templates ". (In simple word we can add dynamic content in our html file in express using template engine.)
 //# Popular engines like EJS, Pug, or Handlebars can be integrated with Express.

@@ -17,7 +17,7 @@ export const PORT =portSchema.parse(process.env.PORT); //parse method PORT valid
 
 
 
-// Todo note part of Port just give another example of Zod validation
+// Todo not part of Port just give another example of Zod validation
 //^ one example(age is greater than 18) of Zod for integer-
 
 //
