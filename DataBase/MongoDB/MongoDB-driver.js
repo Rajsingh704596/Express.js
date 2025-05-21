@@ -4,27 +4,28 @@
 //# MongoDB drivers are available for various programming languages, including Node.js, Python, Java, C++, and more.
 
 
-//! for Node.js-    npm i mongodb
+//! for mongoDB driver install package-    npm i mongodb
 
 
-import { MongoClient } from "mongodb";
+import { MongoClient } from "mongodb";    // import MongoClient
 
-//new instance create
-const client = new MongoClient("mongodb://localhost:27017/")               //here connect Url put which is create for local/ cloud   //here we can use local ip -  mongodb://127.0.0.1  , if it's not work
+//^ new instance create
+const client = new MongoClient("mongodb://localhost:27017/")         //here we pass MongoDB URI (which we create cluster time) for connect local/cloud mongodb server   //here we can use local ip - "mongodb://127.0.0.1"  , if that is not work
 
-//connect with mongodb server
+//^ connect with mongodb server
 await client.connect();          //it's return promise so that we use await
 
-//database create
-const db = client.db('mongodb_nodejs_db')
+//^ database create
+const db = client.db('mongodb_nodejs_db')        // create database name - mongodb_nodejs_db    
 
-//create collection
-const userCollection = db.collection("user");
+//^ create collection
+const userCollection = db.collection("user");    // create collection name- user  
+
 
 //^ CRUD Operation -
-
-//@insert one data
-// userCollection.insertOne({name:"Rock Star", age:25});
+//$ Create Data-
+//@insert one data in userCollection
+// userCollection.insertOne({name:"Rock Star", age:25});      // mongodb is flexible Schema-less (no fixed schema required), so any data pass 
 
 //@insert many data
 // userCollection.insertMany([
@@ -52,7 +53,7 @@ const userCollection = db.collection("user");
 // console.log(user._id.toHexString());  //678fcf77b180de58d121df80
 
 //$ Update data-
-// await userCollection.updateOne({name:"Royal"},{$set:{age:30}});
+// await userCollection.updateOne({name:"Royal"},{$set:{age:30}});      // document jisme name : "Royal" uski age ko 30 kar dega
 
 // await userCollection.updateMany(
 //     { age: { $lt: 30 } },  // condition: age jo 30 se kam ho
@@ -64,8 +65,12 @@ const userCollection = db.collection("user");
 //   );
 
 //$ Delete data-
-// await userCollection.deleteOne({name:"Rock Star"});
+// await userCollection.deleteOne({name:"Rock Star"});  // in Collection top se jo bhi document k name field Rock star hai use delete kar tho
 
-const result=await userCollection.deleteMany({name:"Royal"});
-console.log(`${result.deletedCount} document deleted`);        //now this line show in terminal how many documents delete in collection
+// const result=await userCollection.deleteMany({name:"Royal"}); // userCollection m jitne bhi document name field Royal hai use delete kar dega 
+// console.log(`${result.deletedCount} document deleted`);        //now this line show in terminal how many documents delete in collection
 
+
+
+//Todo for run this file in Terminal-  PS D:\FullCourse_Backend\Express.js\DataBase\MongoDB> node MongoDB-driver.js
+//! Note -- here express ki need nhi pdi only MongoDB driver k component MongoClient se mongoDB database m bane hue localhost cluster se connection karke CRUD operation perfomr kiya 
