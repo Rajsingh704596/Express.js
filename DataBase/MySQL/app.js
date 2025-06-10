@@ -1,36 +1,39 @@
 //! Mysql -  mySql is not case sensitive
 
-//  in node express mySql package install-      npm i mysql2
+//^  In node express + mySql package install in package.json-      npm i mysql2
 
 import mysql from "mysql2/promise";               //promise version use
 
 
-//? step 1: to connect mySql server to node js
+//? step 1: to connect mySql server with node js
 
 const db = await mysql.createConnection({                //await use because it's return promise and we use promise version
     host:"localhost",  
     user:"root",
     password:"raj21@mysql",
-    // database:""              // when no database create 
+    // database:""                 // when no database create 
     database:"mysql_db"         // when database create then use line for Crud perform
 })
 console.log("MySql Connected Successfully");
 
 //? step 2: create a database
 
-// await db.execute(`create database mysql_db`);           //now mysql_db name se database create
-console.log(await db.execute("show databases"));          // this query show database
+// await db.execute(`create database mysql_db`);            // now mysql_db name se database create 
+// console.log(await db.execute("show databases"));          // this query show all database in mySql server
 
-//* o/p - in terminal
-// PS D:\Express.js\DataBase\MySQL> node app.js
+//* o/p - In terminal
+// PS D:\FullCourse_Backend\Express.js\DataBase\MySQL> node app.js
 // MySql Connected Successfully
 // [
 //   [
+//     { Database: 'drizzle_db' },
 //     { Database: 'information_schema' },
 //     { Database: 'mohit_team' },
 //     { Database: 'mysql' },
 //     { Database: 'mysql_db' },
+//     { Database: 'mysql_test' },
 //     { Database: 'performance_schema' },
+//     { Database: 'prismasql' },
 //     { Database: 'sys' }
 //   ],
 //   [ `Database` VARCHAR(64) ]
@@ -54,12 +57,12 @@ console.log(await db.execute("show databases"));          // this query show dat
 
 //# Using inline values (Not Recommended)
 // await db.execute(
-//     `INSERT into users(username, email) values('Joy','jou@rok.com')`
+//     ` INSERT into users(username, email) values('Joy','jou@rok.com') `
 // )
 
 //# Using Prepared Statements (Best Practice for prevent sql injection / hack the data) 
 // await db.execute(
-//      `insert into users(username, email) values(?,?)` ,["Joys","joy@rock.com"]
+//      ` insert into users(username, email) values(?,?) `,["Joys","joy@rock.com"]
 //      )
      
 //# Multiple insertion
@@ -80,25 +83,43 @@ const rows = await db.execute(` select * from users`);
 console.log(rows);
 
 //* o/p-
+// PS D:\FullCourse_Backend\Express.js\DataBase\MySQL> node app.js
+// MySql Connected Successfully
 // [
-//     [ { id: 1, username: 'Joy', email: 'jou@rok.com' } ],
-//     [
-//       `id` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-//       `username` VARCHAR(100) NOT NULL,
-//       `email` VARCHAR(100) NOT NULL UNIQUE_KEY
-//     ]
+//   [
+//     { id: 1, username: 'Joy', email: 'jou@rok.com' },
+//     { id: 2, username: 'Joys', email: 'joy@rock.com' }
+//   ],
+//   [
+//     `id` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+//     `username` VARCHAR(100) NOT NULL,
+//     `email` VARCHAR(100) NOT NULL UNIQUE_KEY
 //   ]
+// ]
   
-//so we got [rows , field] but we want only rows so
+//^ so we got [rows , field] but we want only rows so we destructure rows 
 
 // const [rows] = await db.execute(` select * from users`);
-// console.log(rows);                                                 // * o/p- [ { id: 1, username: 'Joy', email: 'jou@rok.com' } ],
+// console.log(rows);                                                
+
+// * o/p- 
+// PS D:\FullCourse_Backend\Express.js\DataBase\MySQL> node app.js
+// MySql Connected Successfully
+// [
+//   { id: 1, username: 'Joy', email: 'jou@rok.com' },
+//   { id: 2, username: 'Joys', email: 'joy@rock.com' }
+// ]
 
 
-//# particular rows show in table
+//# particular rows show in table using where
 
 // const [rows] = await db.execute(`select * from users where username="mari" `)
 // console.log(rows);
+
+//* o/p- 
+// PS D:\FullCourse_Backend\Express.js\DataBase\MySQL> node app.js
+// MySql Connected Successfully
+// [ { id: 6, username: 'mari', email: 'rubi3@gm.com' } ]
 
 
 //$ Update Query
@@ -106,7 +127,6 @@ console.log(rows);
 //  UPDATE table_name
 //  SET column1 = value1, column2 = value2, ...
 //  Where condition;
-
 
 // try {
 //     const [rows] = await db.execute (`update users set username ="RockDev" where email="rubi4@gm.com"`);
